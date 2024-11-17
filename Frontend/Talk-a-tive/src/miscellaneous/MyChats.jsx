@@ -125,7 +125,7 @@ function  MyChats () {
         overflowY="hidden"
         > 
         { chats? (
-             < Stack overflowY="scroll">
+             < Stack overflowY="scroll" className='overflow-y-hidden'>
                 {chats?.map((chat)=>(
                   
                   

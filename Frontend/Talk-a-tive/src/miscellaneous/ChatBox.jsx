@@ -2,6 +2,7 @@ import React from 'react';
 import { ChatState } from '../Contexts/ChatContext';
 import { Box } from '@chakra-ui/react';
 import SingleChat from '../components/SingleChat';
+import "../index.css"
 
 function  ChatBox () {
   const {selectedChat}=ChatState()

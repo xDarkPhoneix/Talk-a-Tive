@@ -6,3 +6,7 @@
 .App {
   background-image: url("image.png");
 }
+
+.main::-webkit-scrollbar {
+  display: none;
+}
