@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "server": "nodemon backend/server.js",
-    "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
+    "build": "npm install && npm install --prefix Frontend/Talk-a-tive && npm run build --prefix Frontend/Talk-a-tive"
   },
   "author": "",
   "license": "ISC",
