@@ -12,6 +12,19 @@ export default defineConfig({
       }
     },
   },
+  build: {
+  
+    chunkSizeWarningLimit: 1000, // Increase limit to 1000 kB
+  
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Group dependencies into separate chunks
+          vendor: ['react', 'react-dom'], // Separate React and ReactDOM
+        },
+      },
+    }
+  },
   plugins: [react()],
 });
 
