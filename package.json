@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "server": "nodemon backend/server.js",
-    "build": "npm install && npm install --prefix Frontend/Talk-a-tive && npm run build --prefix Frontend/Talk-a-tive"
+    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix Frontend/Talk-a-tive && npm run build --prefix Frontend/Talk-a-tive"
+    
   },
   "author": "",
   "license": "ISC",
@@ -28,5 +29,10 @@
     "nodemon": "^3.1.7",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13"
-  }
+  },
+  "engines": {
+  "node": ">=16.x",
+  "npm": ">=7.x"
+}
+
 }
