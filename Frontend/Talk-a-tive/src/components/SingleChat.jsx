@@ -9,8 +9,8 @@ import UpdateGroupChatModal from '../miscellaneous/UpdateGroupChatModal';
 import axios from 'axios';
 import ScorllableChat from '../miscellaneous/ScorllableChat';
 import io from "socket.io-client"
-import Lottie from "react-lottie"
-import animationData from "../animations/typing.json"
+
+
 
 
 const ENDPOINT="http://localhost:3000";
@@ -27,15 +27,7 @@ function  SingleChat () {
   const [istyping,setIsTyping]=useState(false)
   const toast=useToast()
     
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
+ 
 
   const fetchMessages=async()=>{
     if (!selectedChat) return;
@@ -247,12 +239,7 @@ const typingHandler=(e)=>{
             </div>
           )}
           <FormControl onKeyDown={sendMessage} isRequired mt={3}>
-            {istyping ? (<div><Lottie
-             options={defaultOptions}
-             // height={50}
-             width={70}
-             style={{ marginBottom: 15, marginLeft: 0 }}
-            /></div>):(<></>)}
+            {istyping ? (<div>Typing...</div>):(<></>)}
             <Input
              variant="filled"
              bg="#E0E0E0"
