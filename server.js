@@ -44,7 +44,7 @@ app.use("/message",MessageRouter)
 // -----------Deployment Code----------------
 
 const _dirname1=path.resolve();
-if(process.env.NODE_ENV==="production"){
+if(process.env.NODE_ENV==="development"){
   
   app.use(express.static(path.join(_dirname1,"Frontend/Talk-a-tive/dist")))
   app.get("*",(req,res)=>{
