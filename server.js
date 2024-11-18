@@ -12,7 +12,7 @@ const app = express();
 
 connectDB()
 var corsOptions = {
-  origin: "https://talk-a-tive-f10i.onrender.com",
+  origin: process.env.API_BASE_URL,
    methods:[ 'GET, POST, PUT, DELETE, OPTIONS'],
    credentials:true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -97,7 +97,7 @@ const server=app.listen(PORT, () => {
 const io=new Server(server,{
    pingTimeout:60000,
    cors:{
-    origin:"https://talk-a-tive-f10i.onrender.com"
+    origin:process.env.API_BASE_URL
    }
 })
 

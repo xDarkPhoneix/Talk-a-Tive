@@ -8,7 +8,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App.jsx";
-import "./index.css";
 import Home from "./components/Home.jsx";
 import Layout from "./Layout.jsx";
 import Chats from "./components/Chats.jsx";
