@@ -9,11 +9,13 @@ import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "../Contexts/ChatContext";
 
+
+
 function Login() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {setUser}=ChatState()
+  const {setUser,END_POINT}=ChatState()
   const [loading, setLoading] = useState(false);
   const toast=useToast()
   const navigate=useNavigate()
@@ -34,7 +36,7 @@ function Login() {
           },
         };
         const { data } = await axios.post( 
-          "http://localhost:3000/users/login",
+          `${END_POINT}/users/login`,
           {
            email,
            password

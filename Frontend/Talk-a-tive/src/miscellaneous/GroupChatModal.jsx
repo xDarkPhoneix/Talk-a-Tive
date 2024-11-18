@@ -14,7 +14,7 @@ function  GroupChatModal ({children}) {
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
     const toast = useToast();
-    const {user,chats,setChats}=ChatState()
+    const {user,chats,setChats,END_PONT}=ChatState()
 
     const handleSearch=async(query)=>{
         setSearch(query);
@@ -30,7 +30,7 @@ function  GroupChatModal ({children}) {
           Authorization: `Bearer ${user.data.user}`,
         },
       };
-     const {data}= await axios.get(`http://localhost:3000/users/getallUser?search=${search}`,config,{withCredentials:true})
+     const {data}= await axios.get(`${END_PONT}/users/getallUser?search=${search}`,config,{withCredentials:true})
      
       
       console.log(data);
@@ -70,7 +70,7 @@ function  GroupChatModal ({children}) {
             },
           };
 
-          const {data}= await axios.post("http://localhost:3000/chats/createGroupChat",
+          const {data}= await axios.post(`${END_PONT}/chats/createGroupChat`,
             {
             name: groupChatName,
             users: JSON.stringify(selectedUsers.map((u) => u._id)),

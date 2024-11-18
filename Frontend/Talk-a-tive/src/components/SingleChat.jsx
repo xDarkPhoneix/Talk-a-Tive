@@ -13,11 +13,11 @@ import io from "socket.io-client"
 
 
 
-const ENDPOINT="http://localhost:3000";
+
 var socket,selectedChatCompare;
 
 function  SingleChat () {
-    const {user,setUser,selectedChat,setSelectedChat,chats,setChats,fetchAgain,setFetchAgain,notifications,setNotifications}=ChatState()
+    const {user,setUser,selectedChat,setSelectedChat,chats,setChats,fetchAgain,setFetchAgain,notifications,setNotifications,END_POINT}=ChatState()
     const [loggeduser,setLoggedUser]=useState()
     const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ function  SingleChat () {
         },
       };
       setLoading(true)
-       const {data}=await axios.get(`http://localhost:3000/message/${selectedChat._id}`,config)
+       const {data}=await axios.get(`${END_POINT}/message/${selectedChat._id}`,config)
       
 
        setMessages(data.data)
@@ -79,7 +79,7 @@ function  SingleChat () {
         };
 
         setNewMessage("")
-       const {data}= await axios.post("http://localhost:3000/message/sendmessage",{
+       const {data}= await axios.post(`${END_POINT}/message/sendmessage`,{
          chatId:selectedChat._id,
          content:newMessage
 

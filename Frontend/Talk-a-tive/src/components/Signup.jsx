@@ -6,11 +6,13 @@ import { VStack ,useToast} from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
 import{ useNavigate} from "react-router-dom"
+import { ChatState } from "../Contexts/ChatContext";
 
 function Signup() {
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
+  const {END_POINT}=ChatState()
   const [confirmpassword, setConfirmpassword] = useState();
   const [password, setPassword] = useState();
   const [pic, setPic] = useState();
@@ -35,7 +37,7 @@ function Signup() {
           },
         };
         const { data } = await axios.post(
-          "http://localhost:3000/users/register",
+         ` ${END_POINT}/users/register`,
           {
             name,
             email,

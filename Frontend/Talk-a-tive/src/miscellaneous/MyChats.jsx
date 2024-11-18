@@ -9,7 +9,7 @@ import GroupChatModal from './GroupChatModal';
 
 
 function  MyChats () {
-    const {user,selectedChat,setSelectedChat,chats,setChats,fetchAgain}=ChatState()
+    const {user,selectedChat,setSelectedChat,chats,setChats,fetchAgain,END_POINT}=ChatState()
     const [loggeduser,setLoggedUser]=useState()
     const [loading,setLoading]=useState(false)
     const toast=useToast()
@@ -25,7 +25,7 @@ function  MyChats () {
              }
           }
 
-         const {data}= await axios.get("http://localhost:3000/chats/fetchchats",config)
+         const {data}= await axios.get(`${END_POINT}/chats/fetchchats`,config)
          console.log("chata data",data);
          
          setChats(data.data)

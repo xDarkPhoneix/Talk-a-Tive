@@ -21,7 +21,7 @@ function  SideDrawer () {
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
     const [loadingChat, setLoadingChat] = useState(false);
-    const {user,setUser,selectedChat,setSelectedChat,chats,setChats,notifications,setNotifications}=ChatState()
+    const {user,setUser,selectedChat,setSelectedChat,chats,setChats,notifications,setNotifications,END_POINT}=ChatState()
     const [render,setrender]=useState(false)
     const toast=useToast()
     const navigate=useNavigate()
@@ -48,7 +48,7 @@ function  SideDrawer () {
                 }
             };
 
-           const {data}= await axios.get(`http://localhost:3000/users/getallUser?search=${search}`,config,{withCredentials:true})
+           const {data}= await axios.get(`${END_POINT}/users/getallUser?search=${search}`,config,{withCredentials:true})
            console.log(data);
            setLoading(false)
            setSearchResult(data)
@@ -80,7 +80,7 @@ function  SideDrawer () {
                      Authorization:`Bearer ${user.data.user}`
                 }
             }
-          const {data}= await axios.post("http://localhost:3000/chats/acessChat",{
+          const {data}= await axios.post(`${END_POINT}/chats/acessChat`,{
             userId:lol
           },config)
             

@@ -17,7 +17,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
     const [renameloading, setRenameLoading] = useState(false);
     const toast = useToast();
   
-    const { selectedChat, setSelectedChat, user,fetchAgain,setFetchAgain } = ChatState();
+    const { selectedChat, setSelectedChat, user,fetchAgain,setFetchAgain,END_POINT } = ChatState();
     const handleRemove=async(user1)=>{
 
       if(selectedChat.groupAdmin._id==user._id && user1._id!==user._id){
@@ -42,7 +42,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
           }
       };
         
-        const {data}=await axios.post("http://localhost:3000/chats/removeFromGroup",{
+        const {data}=await axios.post(`${END_POINT}/chats/removeFromGroup`,{
           chatId:selectedChat._id,
           userId:user1._id
         },config)
@@ -83,7 +83,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
                 }
             };
 
-           const {data}= await axios.put("http://localhost:3000/chats/renamegroup",{
+           const {data}= await axios.put(`${END_POINT}/chats/renamegroup`,{
              chatId:selectedChat._id,
              chatName:groupChatName
            },config)
@@ -145,7 +145,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
               }
           };
 
-         const {data}= await axios.post("http://localhost:3000/chats/addToGroup",{
+         const {data}= await axios.post(`${END_POINT}/chats/addToGroup`,{
             chatId:selectedChat._id,
             userId:user1._id
           },config)
@@ -185,7 +185,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
         Authorization: `Bearer ${user.data.user}`,
       },
     };
-   const {data}= await axios.get(`http://localhost:3000/users/getallUser?search=${search}`,config,{withCredentials:true})
+   const {data}= await axios.get(`${END_POINT}/users/getallUser?search=${search}`,config,{withCredentials:true})
    
     
     console.log(data);

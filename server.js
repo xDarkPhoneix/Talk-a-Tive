@@ -12,7 +12,7 @@ const app = express();
 
 connectDB()
 var corsOptions = {
-  origin: "*",
+  origin: "https://talk-a-tive-f10i.onrender.com",
    methods:[ 'GET, POST, PUT, DELETE, OPTIONS'],
    credentials:true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -88,14 +88,16 @@ app.get("/api/data/:id", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000'
+
 const server=app.listen(PORT, () => {
-  console.log("Server is listning on port : http://localhost:3000");
+  console.log(`Server is listning on port : ${API_BASE_URL}`);
 });
 
 const io=new Server(server,{
    pingTimeout:60000,
    cors:{
-    origin:"http://localhost:5173"
+    origin:"https://talk-a-tive-f10i.onrender.com"
    }
 })
 
