@@ -12,7 +12,7 @@ const app = express();
 
 connectDB()
 var corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: "*",
    methods:[ 'GET, POST, PUT, DELETE, OPTIONS'],
    credentials:true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
