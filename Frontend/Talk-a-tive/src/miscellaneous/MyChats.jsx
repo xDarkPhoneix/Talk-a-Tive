@@ -92,9 +92,9 @@ function  MyChats () {
       <Box
         pb={3}
         px={3}
-        fontSize={{ base: "28px", md: "30px" }}
+        //fontSize={{ base: "28px", md: "30px" }}
         fontFamily="Work sans"
-        className='flex justify-between items-center w-full'
+        className='flex justify-between items-center w-full text-[25px] md:text-[30px]'
         
        
       >
@@ -105,8 +105,9 @@ function  MyChats () {
        
         <GroupChatModal>
         <Button
-           className='flex'
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+          p={2}
+           className='flex text-[10px] md:text-[17px]  '
+           // fontSize={{ base: "17px", md: "10px", lg: "17px" }}
             rightIcon={<AddIcon />}
           >
             
