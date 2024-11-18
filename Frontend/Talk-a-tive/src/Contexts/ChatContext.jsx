@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ChatContext=createContext()
 
 const ChatProvider=({children})=>{ 
-    const END_POINT="https://talk-a-tive-f10i.onrender.com"
+    const END_POINT="http://localhost:3000"
     const [user,setUser]=useState()
     const [selectedChat,setSelectedChat]=useState()
     const [chats,setChats]=useState([])

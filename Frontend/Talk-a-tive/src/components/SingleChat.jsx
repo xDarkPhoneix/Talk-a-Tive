@@ -113,7 +113,7 @@ function  SingleChat () {
   
 
   useEffect(()=>{
-    socket=io(ENDPOINT)
+    socket=io(END_POINT)
     socket.emit("setup",user.data.loggedInUser)
     socket.on("connected",()=>{setSocketConnected(true)})
     socket.on("typing",()=>setIsTyping(true))
