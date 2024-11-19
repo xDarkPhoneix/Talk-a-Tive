@@ -10,7 +10,7 @@ import ChatLoading from './ChatLoading';
 function  UpdateGroupChatModal ({fetchMessages}) {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [groupChatName, setGroupChatName] = useState();
+    const [groupChatName, setGroupChatName] = useState("");
     const [search, setSearch] = useState("");
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -19,7 +19,8 @@ function  UpdateGroupChatModal ({fetchMessages}) {
   
     const { selectedChat, setSelectedChat, user,fetchAgain,setFetchAgain,END_POINT } = ChatState();
     const handleRemove=async(user1)=>{
-
+      console.log("r",user1);
+      
       if(selectedChat.groupAdmin._id==user._id && user1._id!==user._id){
         toast({
           title: "Only admins can remove  someone!",
@@ -47,6 +48,10 @@ function  UpdateGroupChatModal ({fetchMessages}) {
           userId:user1._id
         },config)
         console.log("removeuser data",data);
+         
+        console.log("use",user1._id);
+        console.log("log",user.data.loggedInUser._id);
+        
         
         user1._id==user.data.loggedInUser._id ? setSelectedChat():setSelectedChat(data.data)
         setFetchAgain(!fetchAgain)
@@ -273,7 +278,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
             </ModalBody>
   
             <ModalFooter>
-            <Button onClick={() => handleRemove(user)} colorScheme="red">
+            <Button onClick={() => handleRemove(user.data.loggedInUser)} colorScheme="red">
               Leave Group
             </Button>
              

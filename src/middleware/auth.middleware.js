@@ -14,12 +14,16 @@ export const  verifyJwt=asynchandler(async(req,res,next)=>{
   const  decodedToken=jwt.verify(token,"jhgusgasygysa")
 
   const user=await User.findById(decodedToken?._id).select("-password")
+  
+  
 
   if(!user){
     throw new API_ERROR(401,"Unauthorized Acesss")
   }
 
   req.user=user
+  console.log("req,user",req.user);
+  
   next()
 
 

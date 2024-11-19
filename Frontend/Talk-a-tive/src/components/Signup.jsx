@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@chakra-ui/react";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
@@ -10,11 +10,11 @@ import { ChatState } from "../Contexts/ChatContext";
 
 function Signup() {
   const [show, setShow] = useState(false);
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const {END_POINT}=ChatState()
-  const [confirmpassword, setConfirmpassword] = useState();
-  const [password, setPassword] = useState();
+  const [confirmpassword, setConfirmpassword] = useState("");
+  const [password, setPassword] = useState("");
   const [pic, setPic] = useState();
   const [picLoading, setPicLoading] = useState(false);
   const toast=useToast()
@@ -29,6 +29,16 @@ function Signup() {
 
   const submitHandler = async (e) => {   
     e.preventDefault();
+    if(!name || !email || !password){
+      toast({
+        title: "Enter all feilds",
+        status: "error",
+        duration: 50000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return
+    }
     console.log(name, email, password);
     try {
        const config = {
@@ -49,28 +59,33 @@ function Signup() {
       
         console.log(data);
         toast({
-          title: "Registration Successful",
+          title: "Registration Successful Now Login",
           status: "success",
-          duration: 5000,
+          duration: 7000,
           isClosable: true,
           position: "bottom",
         });
-        localStorage.setItem("userInfo", JSON.stringify(data));
-        navigate("/chats")
+        navigate("")
     } catch (error) {
       toast({
-        title: "Error Occured!",
+        title: "Error Occured! || Maybe User Already Exists",
         description: error.response.data.message,
         status: "error",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
+      setName("")
+       setConfirmpassword("")
+       setEmail("")
+       setPassword("")
+        
       setPicLoading(false);
     }
       
     }
-      
+    
+    useEffect(()=>{},[navigate])
 
   
  
@@ -132,7 +147,7 @@ function Signup() {
             type="file"
             p={1.5}
             accept="image/*"
-            onChange={(e) => postDetails(e.target.files[0])}
+            //onChange={(e) => postDetails(e.target.files[0])}
           />
         </FormControl>
         <Button colorScheme="blue"

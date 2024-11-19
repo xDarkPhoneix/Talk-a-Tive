@@ -56,20 +56,26 @@ const registerUser=asynchandler(async (req,res)=>{
     
      })
 
-     
-
-
      if(!user){
       throw new API_ERROR(500,"user creation failed")
      }  
 
-     
 
-     res.status(201).json(new ApiResponse(200,"user created sucessfully",user))
+     if(!user){
+        throw new API_ERROR(500,"user creation failed")
+       }  
+  
+       
+  
+       res.status(201).json(new ApiResponse(200,"user created sucessfully",user))
+      
+  
     
+  })
+  
 
   
-})
+
 
 const loginUser=asynchandler(async(req,res)=>{
     const {email,password}=req.body

@@ -26,7 +26,7 @@ function  MyChats () {
           }
 
          const {data}= await axios.get(`${END_POINT}/chats/fetchchats`,config)
-         console.log("chata data",data);
+        
          
          setChats(data.data)
 
@@ -55,11 +55,9 @@ function  MyChats () {
        setLoggedUser( JSON.parse(localStorage.getItem("userInfo")))
        
        fetchCHats()
-       console.log("chats:",chats);
       
-       prints()
-       console.log("selectedChat",selectedChat);
-       
+      
+      
        
        
     },[fetchAgain])

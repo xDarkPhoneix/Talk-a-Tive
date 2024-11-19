@@ -12,6 +12,7 @@ import Home from "./components/Home.jsx";
 import Layout from "./Layout.jsx";
 import Chats from "./components/Chats.jsx";
 import ChatProvider from "./Contexts/ChatContext.jsx";
+import Login from "./components/Login.jsx";
 
 
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout/>}>
     <Route path="/" element={<Home/>}/>
     <Route path="/chats" element={<Chats/>}/>
+   
     </Route>
    
      

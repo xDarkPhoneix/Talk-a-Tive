@@ -101,8 +101,6 @@ function  GroupChatModal ({children}) {
       }
 
       useEffect(()=>{
-        console.log("groupchat",chats);
-        console.log("searchResult",searchResult);
         
         
       },[])
