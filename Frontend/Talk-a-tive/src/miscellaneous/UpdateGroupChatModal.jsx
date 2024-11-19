@@ -19,9 +19,9 @@ function  UpdateGroupChatModal ({fetchMessages}) {
   
     const { selectedChat, setSelectedChat, user,fetchAgain,setFetchAgain,END_POINT } = ChatState();
     const handleRemove=async(user1)=>{
-      console.log("r",user1);
+     
       
-      if(selectedChat.groupAdmin._id==user._id && user1._id!==user._id){
+      if(selectedChat.groupAdmin._id==user.data.loggedInUser._id && user1._id!==user.data.loggedInUser._id){
         toast({
           title: "Only admins can remove  someone!",
           status: "error",
@@ -49,9 +49,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
         },config)
         console.log("removeuser data",data);
          
-        console.log("use",user1._id);
-        console.log("log",user.data.loggedInUser._id);
-        
+       
         
         user1._id==user.data.loggedInUser._id ? setSelectedChat():setSelectedChat(data.data)
         setFetchAgain(!fetchAgain)
@@ -131,7 +129,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
             return;
           }
 
-          if(selectedChat.groupAdmin._id==user._id){
+          if(selectedChat.groupAdmin._id!==user.data.loggedInUser._id){
             toast({
               title: "Only admins can add someone!",
               status: "error",
@@ -268,7 +266,7 @@ function  UpdateGroupChatModal ({fetchMessages}) {
                 <UserListItem
                   key={user._id}
                   user={user}
-                  handleFunction={() => handleAddUser(user)}
+                  handleFunction={() => handleAddUser(user.data.loggedInUser)}
                 />
               ))
             )}

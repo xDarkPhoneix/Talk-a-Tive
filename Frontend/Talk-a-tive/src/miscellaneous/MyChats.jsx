@@ -78,7 +78,7 @@ function  MyChats () {
     <Box
       
      // d={{ base: selectedChat ? "none" : "flex", md: "flex" }}
-      className={`${selectedChat ? "hidden" : "flex"} md:flex  flex-col items-center w-full md:w-[31%]`}
+      className={`${selectedChat ? "hidden" : "flex"} md:flex  flex-col items-center w-full md:w-[31%] `}
       p={3}
       bg="white"
 
